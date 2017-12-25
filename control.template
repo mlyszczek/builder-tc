@@ -1,0 +1,11 @@
+Package: native-toolchain
+Version: 6.4.0
+Description: gcc and library family to build software on host
+Section: extras
+Priority: optional
+Maintainer: Michał Łyszczek
+License: gpl2
+Architecture: ${ARCH}
+Homepage: kurwinet.pl
+Depends:
+Source:  N/A
