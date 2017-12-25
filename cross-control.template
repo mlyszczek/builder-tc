@@ -1,0 +1,11 @@
+Package: cross-${TARGET}
+Version: 6.4.0
+Description: gcc and library family to build software for specific architecture
+Section: extras
+Priority: optional
+Maintainer: Michał Łyszczek
+License: gpl2
+Architecture: amd64
+Homepage: kurwinet.pl
+Depends:
+Source:  N/A
