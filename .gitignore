@@ -3,3 +3,4 @@ build.log
 .config
 *.opk
 src
+.config.old
