@@ -1,4 +1,4 @@
-Package: native-toolchain
+Package: native-${TARGET}
 Version: 6.4.0
 Description: gcc and library family to build software on host
 Section: extras

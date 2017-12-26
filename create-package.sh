@@ -2,18 +2,18 @@
 
 umask 022
 
-create_canadian()
+create_native()
 {
     cp -r ${tc_path} tmp/usr/native-toolchain
     chmod a+rX -R tmp/usr/native-toolchain
-    cp canadian-control.template tmp/CONTROL/control
+    cp native-control.template tmp/CONTROL/control
     sed -i "s/\${ARCH}/${arch}/g" tmp/CONTROL/control
+    sed -i "s/\${TARGET}/${CT_TARGET}/" tmp/CONTROL/control
 }
 
 
 create_cross()
 {
-    CT_TARGET="${arch}-${vendor}-${kernel}-${lib}"
     path=`echo "${tc_path}" | sed "s/\\${CT_TARGET}/${CT_TARGET}/g"`
     mkdir tmp/usr/cross-toolchain
     cp -r ${path} tmp/usr/cross-toolchain
@@ -29,6 +29,7 @@ vendor=`grep CT_TARGET_VENDOR=\" .config | cut -f2 -d\"`
 kernel=`grep CT_KERNEL=\" .config | cut -f2 -d\"`
 tc_path=`grep CT_PREFIX_DIR=\" .config | cut -f2 -d\"`
 tc_type=`grep CT_TOOLCHAIN_TYPE=\" .config | cut -f2 -d\"`
+CT_TARGET="${arch}-${vendor}-${kernel}-${lib}"
 
 
 rm -rf tmp
@@ -38,7 +39,7 @@ mkdir tmp/usr
 
 if [ "${tc_type}" = "canadian" ]
 then
-    create_canadian
+    create_native
 else
     create_cross
 fi
