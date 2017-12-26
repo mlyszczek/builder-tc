@@ -185,8 +185,6 @@ CT_FORCE_SYSROOT=y
 CT_USE_SYSROOT=y
 CT_SYSROOT_NAME="sysroot"
 CT_SYSROOT_DIR_PREFIX=""
-CT_WANTS_STATIC_LINK=y
-CT_WANTS_STATIC_LINK_CXX=y
 # CT_STATIC_TOOLCHAIN is not set
 CT_SHOW_CT_VERSION=y
 CT_TOOLCHAIN_PKGVERSION=""
@@ -202,16 +200,23 @@ CT_TARGET_ALIAS=""
 #
 # Toolchain type
 #
-CT_CROSS=y
-# CT_CANADIAN is not set
-CT_TOOLCHAIN_TYPE="cross"
+# CT_CROSS is not set
+CT_CANADIAN=y
+CT_TOOLCHAIN_TYPE="canadian"
 
 #
 # Build system
 #
-CT_BUILD="armv7a-builder-linux-gnueabihf"
-CT_BUILD_PREFIX="/usr/toolchain/armv7a-builder-linux-gnueabihf/bin/armv7a-builder-linux-gnueabihf-"
+CT_BUILD=""
+CT_BUILD_PREFIX=""
 CT_BUILD_SUFFIX=""
+
+#
+# Host system
+#
+CT_HOST="armv7a-builder-linux-gnueabihf"
+CT_HOST_PREFIX="/usr/toolchain/armv7a-builder-linux-gnueabihf/bin/armv7a-builder-linux-gnueabihf-"
+CT_HOST_SUFFIX=""
 
 #
 # Misc options
