@@ -16,8 +16,8 @@ export CT_TOP_DIR:=$(shell pwd)
 
 # Paths and values set by ./configure
 # Don't bother to change it other than with a new ./configure!
-export CT_LIB_DIR:=/usr/local/lib/crosstool-ng-1.23.0-288-gadaa3a5d
-export CT_DOC_DIR:=/usr/local/share/doc/crosstool-ng/crosstool-ng-1.23.0-288-gadaa3a5d
+export CT_LIB_DIR:=${CT_TOP_DIR}/.crosstool
+export CT_DOC_DIR:=${CT_TOP_DIR}/.crosstool-doc
 
 # This is crosstool-NG version string
 export CT_VERSION:=crosstool-ng-1.23.0-288-gadaa3a5d
