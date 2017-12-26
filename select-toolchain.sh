@@ -3,28 +3,40 @@
 configs=()
 n=0
 
-echo "available configs:"
+###
+# add all configs to array
+#
 
 for c in config.*
 do
-    ((n++))
     configs+=($c)
-    echo -e "\t$n) $c"
 done
 
-if [ $# -eq 0 ]
+###
+# if config is no passed, print usage and list available configs
+#
+
+if [ $# -ne 1 ]
 then
-    read choice
-else
-    choice="$1"
+    echo "usage: ${0} <config_number>"
+    echo ""
+    echo "supported configs are:"
+
+    for c in "${configs[@]}"
+    do
+        echo -e "\t$n) `echo $c | cut -f2- -d.`"
+        ((n++))
+    done
+
+    exit $n
 fi
 
-if [ $choice -lt 1 ] || [ $choice -gt $n ]
+if [ ! -f ${configs[${1}]} ]
 then
-    echo "selected config doesn't exist"
+    echo "config doesn't exist"
     exit 1
 fi
 
-echo ".config -> ${configs[choice - 1]}"
+echo ".config -> ${configs[${1}]}"
 rm -f .config
-ln -s ${configs[choice - 1]} .config
+ln -s ${configs[${1}]} .config

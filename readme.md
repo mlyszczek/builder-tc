@@ -13,13 +13,16 @@ Select what compiler to create using select-toolchain.sh script like
 
 ~~~
 $ ./select-toolchain.sh
-available configs:
-        1) config.cross-armv7
-        2) config.cross-i686
-        3) config.native-armv7a
-        4) config.native-i686
-4
-.config -> config.native-i686
+usage: ./select-toolchain.sh <config_number>
+
+supported configs are:
+    0) cross.armv7a9-builder-linux-gnueabihf
+    1) cross.i686-builder-linux-gnu
+    2) native.armv7a9-builder-linux-gnueabihf
+    3) native.i686-builder-linux-gnu
+
+$ ./select-toolchain.sh 1
+.config -> config.cross.i686-builder-linux-gnu
 ~~~
 
 and then execute "make". This will build toolchain and create opkg package.
