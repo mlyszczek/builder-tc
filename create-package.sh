@@ -17,6 +17,7 @@ create_cross()
     path=`echo "${tc_path}" | sed "s/\\${CT_TARGET}/${CT_TARGET}/g"`
     mkdir tmp/usr/cross-toolchain
     cp -r ${path} tmp/usr/cross-toolchain
+    chmod a+rX -R tmp/usr/cross-toolchain
     cp cross-control.template tmp/CONTROL/control
     sed -i "s/\${TARGET}/${CT_TARGET}/" tmp/CONTROL/control
 }
