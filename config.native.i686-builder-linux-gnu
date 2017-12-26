@@ -189,7 +189,7 @@ CT_BUILD_SUFFIX=""
 # Host system
 #
 CT_HOST="i686-builder-linux-gnu"
-CT_HOST_PREFIX="/usr/toolchain/i686-builder-linux-gnu/bin/i686-builder-linux-gnu-"
+CT_HOST_PREFIX="/usr/cross-toolchain/i686-builder-linux-gnu/bin/i686-builder-linux-gnu-"
 CT_HOST_SUFFIX=""
 
 #
