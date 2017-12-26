@@ -43,4 +43,4 @@ else
 fi
 
 opkg-build -O -o root -g root tmp .
-#rm -rf tmp
+rm -rf tmp
