@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 script_path=`realpath ${0}`
 build_path="`dirname ${script_path}`/.build"
@@ -7,6 +7,13 @@ tc_host=`grep CT_HOST=\" .config | cut -f2 -d\"`
 tc_type=`grep CT_TOOLCHAIN_TYPE=\" .config | cut -f2 -d\"`
 tool_path="${build_path}/tools"
 buildtools_path="${build_path}/HOST-${tc_host}/${tc_host}/buildtools"
+
+echo $tc_host
+if [[ "${tc_host}" = *"-uclibc" ]]
+then
+    cp ${build_path}/${tc_host}/build/build-libc-final/multilib/include/libintl.h \
+        ${tc_path}/${tc_host}/sysroot/usr/include
+fi
 
 if [ "$tc_type" != "canadian" ]
 then
@@ -33,3 +40,4 @@ for t in $tools
 do
     ln -fs "${tc_path}/bin/${tc_host}-${t}" ${tc_path}/bin/${t}
 done
+
