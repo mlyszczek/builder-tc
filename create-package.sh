@@ -8,7 +8,6 @@ create_native()
     chmod a+rX -R tmp/usr/native-toolchain
     cp native-control.template tmp/CONTROL/control
     sed -i "s/\${ARCH}/${arch}/g" tmp/CONTROL/control
-    sed -i "s/\${TARGET}/${ct_target}/" tmp/CONTROL/control
 }
 
 
@@ -19,7 +18,6 @@ create_cross()
     cp -r ${path} tmp/usr/cross-toolchain
     chmod a+rX -R tmp/usr/cross-toolchain
     cp cross-control.template tmp/CONTROL/control
-    sed -i "s/\${TARGET}/${ct_target}/" tmp/CONTROL/control
 }
 
 
@@ -42,6 +40,13 @@ then
 else
     create_cross
 fi
+
+###
+# change _ to - in x86_64- toolchain, as opkg doesn't accept
+# _ characters in names
+#
+ct_target=`echo ${ct_target} | sed 's/_/-/'`
+sed -i "s/\${TARGET}/${ct_target}/" tmp/CONTROL/control
 
 opkg-build -O -o root -g root tmp .
 rm -rf tmp
