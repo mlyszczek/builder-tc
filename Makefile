@@ -8,3 +8,6 @@ all:
 
 nconfig:
 	./ct-ng nconfig
+
+clean:
+	$(RM) *.opk
